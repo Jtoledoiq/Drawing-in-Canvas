@@ -23,7 +23,12 @@
       function draw(e) {
         if(!isDrawing) return; //stop the funcion from running when I am not clicking on the screen, so it doesn't keep drawing
         console.log(e);
-        ctx.beginPath()
+        lastX=e.offsetX;
+        lastY=e.offsetY;
+        ctx.beginPath();
+        ctx.moveTo(lastX,lastY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
       }
 
       canvas.addEventListener('mousemove',draw);
